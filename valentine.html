@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To My Soulmate ❤️</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #ffdde1, #ee9ca7);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    .container {
+      width: 95%;
+      max-width: 650px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease;
+    }
+    h1 {
+      text-align: center;
+      color: #d62828;
+      margin-bottom: 5px;
+    }
+    h2 {
+      text-align: center;
+      
+      color: #444;
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+    img {
+      width: 50%;
+      max-height: 280px;
+      border-radius: 22px;
+      margin: 20px auto;   /* 👈 this centers it */
+      display: block;      /* 👈 required for centering */
+      animation: zoomIn 1s ease;
+}
+
+    .question {
+      font-size: 19px;
+      color: #333;
+      margin: 15px 0 10px;
+      animation: slideUp 0.8s ease;
+    }
+    textarea, input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+      font-size: 15px;
+      margin-bottom: 15px;
+      font-family: inherit;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 16px;
+      border: none;
+      background: linear-gradient(135deg, #e63946, #ff6f91);
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    button:hover { transform: scale(1.03); }
+    .hidden { display: none; }
+
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes zoomIn { from {transform:scale(0.9);} to {transform:scale(1);} }
+    @keyframes slideUp { from {transform:translateY(20px); opacity:0;} to {opacity:1;} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To My Forever ❤️</h1>
+    <h2>A journey of us, through your heart</h2>
+
+    <img id="photo" src="photo1.jpg" alt="Our Memory" />
+
+    <div id="quiz">
+      <div class="question" id="question"></div>
+      <input id="answer" placeholder="Type from your heart…" />
+      <button onclick="nextStep()">Next 💕</button>
+    </div>
+
+    <div id="final" class="hidden">
+      <h1>💍 My Promise</h1>
+      <p style="text-align:center; font-size:18px;">
+        I made this not to test you… but to show you that
+        I remember you. I see you. I choose you.
+        Every version of you.
+      </p>
+      <p style="text-align:center; font-size:18px;">
+        Will you continue choosing me, today and always? ❤️
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const steps = [
+      { photo: 'photo1.jpeg', q: 'Where did we first meet, and what do you remember about that exact moment?' },
+      { photo: 'photo2.jpeg', q: 'What was your very first thought when you saw me?' },
+      { photo: 'photo3.jpeg', q: 'When did you realize I was not just a person, but *your* person?' },
+      { photo: 'photo4.jpeg', q: 'What do you think I feel most insecure about?' },
+      { photo: 'photo5.jpeg', q: 'What is one small thing about me that you know I love?' },
+      { photo: 'photo6.jpeg', q: 'What memory of us makes you smile instantly?' },
+      { photo: 'photo7.jpeg', q: 'What do you think I want most from you emotionally?' },
+      { photo: 'photo8.jpeg', q: 'When you imagine our future, what do you see first?' },
+      { photo: 'photo9.jpeg', q: 'How do you think we will handle hard days together?' },
+      { photo: 'photo10.jpeg', q: 'If you had to promise me one thing forever, what would it be?' }
+    ];
+
+    let index = 0;
+    const questionEl = document.getElementById('question');
+    const photoEl = document.getElementById('photo');
+    const quizEl = document.getElementById('quiz');
+    const finalEl = document.getElementById('final');
+
+    function loadStep() {
+      if (index >= steps.length) {
+        quizEl.classList.add('hidden');
+        photoEl.classList.add('hidden');
+        finalEl.classList.remove('hidden');
+        return;
+      }
+      questionEl.innerHTML = steps[index].q;
+      photoEl.src = steps[index].photo;
+      document.getElementById('answer').value = '';
+    }
+
+    function nextStep() {
+      index++;
+      loadStep();
+    }
+
+    loadStep();
+  </script>
+</body>
+</html>
